@@ -30,9 +30,13 @@ export async function GET(req) {
         });
     }
 
-    const url = `https://adsbexchange-com1.p.rapidapi.com/v2/lat/${lat}/lon/${lon}/dist/10/`;
+    const latFixed = lat.toFixed(4);
+    const lonFixed = lon.toFixed(4);
+    const url = `https://adsbexchange-com1.p.rapidapi.com/v2/lat/${latFixed}/lon/${lonFixed}/dist/10/`;
 
     try {
+        console.log('Querying ADS-B:', url);
+
         const res = await fetch(url, {
             method: 'GET',
             headers: {
