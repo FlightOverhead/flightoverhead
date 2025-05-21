@@ -48,6 +48,7 @@ export async function GET(req) {
         if (!res.ok) throw new Error(`ADS-B Exchange returned ${res.status}`);
 
         const json = await res.json();
+        console.log("ADS-B RAW RESPONSE:", JSON.stringify(json, null, 2));
 
         if (!json.ac || json.ac.length === 0) {
             return new Response(JSON.stringify({ flights: [] }), {
